@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    background-color: #f4f4f4;
+    display: block;
+    height: 20vh;
+    float: left;
+    width: 75%;
+}
+
+nav {
+    float: left;
+    width: 75%;
+    color: #f4f4f4;
+    border: solid 1px #333333;
+    height: 10vh;
+    display: block;
+}
+
+h1.name {
+    position: absolute;
+    margin: 50px 50px;
+    z-index: 3;
+}
+
+h1.name-outset {
+    color: darkgray;
+    position: absolute;
+    margin: 52px 48px;
+    z-index: 2;
+}
+
+.logo {
+    float: right;
+    width: 20%;
+    height: 20vh;
+}
+
+nav a {
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+article {
+    min-height: 70vh;
+    width: 75%;
+    display: block;
+    float: left;
+    background-color: #f4f4f4;
+}
+
+aside {
+    float: right;
+    width: 20%;
+}
+
+aside ul li a {
+    padding: 10px;
+    display: block;
+}
+
+aside ul li a:hover {
+    background-color: #f4f4f4;
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+
+th {
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.required-text {
+    color: red;
+}
+
+input[required] {
+    padding-bottom: 3px;
+    border-bottom: solid 3px #f36c63;
+}
+
+@media screen and (max-width: 500px){
+    aside {
+        display: none;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    article {
+        width: 100%;
+    }
+}
+

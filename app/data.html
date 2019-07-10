@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсовая Злобина Н.В.</title>
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <h1 class="name">Злобина Наталья Владимировна</h1>
+    <h1 class="name-outset">Злобина Наталья Владимировна</h1>
+</header>
+<div class="logo">
+    <img src="images/logo.png" alt="logo" usemap="#map">
+</div>
+<nav>
+    <a href="index.html">Форматирование</a>
+    <a href="css.html">CSS</a>
+    <a href="js.html">JS</a>
+    <a href="crossword.html">Кроссворд</a>
+    <a href="forms.html">Формы</a>
+    <a href="data.html">Дата</a>
+</nav>
+<aside>
+    <ul>
+    </ul>
+</aside>
+<article>
+    <form id="myForm">
+        <fieldset>
+            <legend>Сотрудники</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="lastname">Фамилия</label></td>
+                        <td><input type="text" placeholder="Фамилия" id="lastname"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="startdate">Дата заключения контракта</label></td>
+                        <td><input type="date" placeholder="Дата заключения контракта" id="startdate"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="term">Срок</label></td>
+                        <td><input type="number" id="term" placeholder="Срок..."></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <input type="submit" value="Добавить" style="margin: 15px;">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Фамилия</th>
+                <th>Дата заключения контракта</th>
+                <th>Срок</th>
+                <th>Месяц окончания контракта</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-parent">
+        </tbody>
+    </table>
+</article>
+<map name="map">
+    <area shape="poly" coords="0,0,0,124,92,0" alt="" href="css.html">
+    <area shape="poly" coords="0,124,92,0,185,0" alt="" href="crossword.html">
+    <area shape="poly" coords="185,0,185,62,0,124" alt="" href="data.html">
+    <area shape="poly" coords="185,62,0,124, 185,124" alt="" href="js.html">
+</map>
+<div style="clear: both"></div>
+<footer>
+    <div style="float: left; padding: 10px 50px;">Авторские права </div>
+    <div style="float: right; padding: 10px 50px;">Адрес электронной почты: </div>
+</footer>
+<script type="text/javascript">
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+        addField();
+    });
+
+    function addField() {
+        var startDate = document.getElementById("startdate").value;
+        var tmpDate = new Date(startDate);
+        var term = document.getElementById('term').value;
+        var newDate = new Date(tmpDate.getFullYear() + parseInt(term), tmpDate.getMonth());
+        var month = newDate.getMonth() + 1;
+        var newDateStr = (month.toString().length>1 ? month : ("0" + month)) + "/" + newDate.getFullYear();
+        document.getElementById('tbody-parent').insertAdjacentHTML("beforeend",
+            "<tr><td>" + document.getElementById("lastname").value + "</td>" +
+            "<td>" + startDate + "</td>" +
+            "<td>" + term + "</td>" +
+            "<td>" + newDateStr + " г. </td></tr>");
+    }
+</script>
+</body>
+</html>
+
+
+
+

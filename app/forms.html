@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсовая Злобина Н.В.</title>
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <h1 class="name">Злобина Наталья Владимировна</h1>
+    <h1 class="name-outset">Злобина Наталья Владимировна</h1>
+</header>
+<div class="logo">
+    <img src="images/logo.png" alt="logo" usemap="#map">
+</div>
+<nav>
+    <a href="index.html">Форматирование</a>
+    <a href="css.html">CSS</a>
+    <a href="js.html">JS</a>
+    <a href="crossword.html">Кроссворд</a>
+    <a href="forms.html">Формы</a>
+    <a href="data.html">Дата</a>
+</nav>
+<aside>
+    <ul>
+    </ul>
+</aside>
+<article>
+    <form id="myForm" method="get" action="">
+        <fieldset>
+            <legend>Магазин</legend>
+            <table>
+                <tbody>
+                <tr>
+                    <td><label name="shop-name">Название магазина</label></td>
+                    <td><input id="shop-name" type="text" placeholder="Название магазина..." autofocus required></td>
+                </tr>
+                <tr>
+                    <td><label name="shop-address">Адрес магазина</label></td>
+                    <td><input id="shop-address" type="text" placeholder="Адрес.." required></td>
+                </tr>
+                <tr>
+                    <td> <label name="shop-owner">Фамилия заведующего</label></td>
+                    <td><input type="text" id="shop-owner" placeholder="Фамилия заведующего..."></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Персонал</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="personal-phone">Номер телефона</label></td>
+                        <td><input type="number" id="personal-phone" placeholder="Телефон..."></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-lastname">Фамилия</label></td>
+                        <td><input type="text" id="personal-lastname" placeholder="Фамилия..." required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profession">Должность</label></td>
+                        <td>
+                            <select id="personal-profession" required>
+                                <option>Продавец</option>
+                                <option>Кассир</option>
+                                <option>Менеджер</option>
+                                <option>Консультант</option>
+                                <option>Администратор</option>
+                                <option>Товаровед</option>
+                                <option>Владелец</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-year">Дата рождения</label></td>
+                        <td><input type="date" id="personal-year" placeholder="Дата рождения..."></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-address">Адрес</label></td>
+                        <td><input type="text" id="personal-address" placeholder="Адрес..."></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Персонал</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="product-name">Наименование товара</label></td>
+                        <td><input type="text" id="product-name" placeholder="Наименование товара..." required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-quantity">Количество</label></td>
+                        <td><input type="number" id="product-quantity" placeholder="Количество..."></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-price">Цена за единицу</label></td>
+                        <td><input type="number" id="product-price" placeholder="Цена за единицу..." required></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <input type="submit" value="Отправить" style="margin: 10px;">
+        <input type="button" value="Удалить" onclick="removeFields()">
+    </form>
+</article>
+<map name="map">
+    <area shape="poly" coords="0,0,0,124,92,0" alt="" href="css.html">
+    <area shape="poly" coords="0,124,92,0,185,0" alt="" href="crossword.html">
+    <area shape="poly" coords="185,0,185,62,0,124" alt="" href="data.html">
+    <area shape="poly" coords="185,62,0,124, 185,124" alt="" href="js.html">
+</map>
+<div style="clear: both"></div>
+<footer>
+    <div style="float: left; padding: 10px 50px;">Авторские права </div>
+    <div style="float: right; padding: 10px 50px;">Адрес электронной почты: </div>
+</footer>
+<script type="text/javascript">
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+        if (!document.getElementById('result-table')){
+            showTable();
+        }
+        updateFields();
+    });
+
+    function showTable() {
+        document.getElementById("myForm").insertAdjacentHTML("afterEnd",
+            "<table id='result-table'><tbody>" +
+            "<tr><td>Название магазина</td><td id='table-shop-name'></td></tr>" +
+            "<tr><td>Адрес</td><td id='table-shop-address'></td></tr>" +
+            "<tr><td>Фамилия заведующего</td><td id='table-shop-owner'></td></tr>" +
+            "<tr><td>Номер телефона</td><td id='table-personal-phone'></td></tr>" +
+            "<tr><td>Фамиилия</td><td id='table-lastname'></td></tr>" +
+            "<tr><td>Должность</td><td id='table-profession'></td></tr>" +
+            "<tr><td>Дата рождения</td><td id='table-birthdate'></td></tr>" +
+            "<tr><td>Адрес</td><td id='table-address'></td></tr>" +
+            "<tr><td>Наименование товара</td><td id='table-productname'></td></tr>" +
+            "<tr><td>Количество</td><td id='table-quantity'></td></tr>" +
+            "<tr><td>Цена за штуку</td><td id='table-price'></td></tr>" +
+            "</tbody></table>"
+        );
+    }
+    function updateFields() {
+        document.getElementById('table-shop-name').innerText = document.getElementById('shop-name').value;
+        document.getElementById('table-shop-address').innerText = document.getElementById('shop-address').value;
+        document.getElementById('table-shop-owner').innerText = document.getElementById('shop-owner').value;
+        document.getElementById('table-personal-phone').innerText = document.getElementById('personal-phone').value;
+        document.getElementById('table-lastname').innerText = document.getElementById('personal-lastname').value;
+        document.getElementById('table-profession').innerText = document.getElementById('personal-profession').value;
+        document.getElementById('table-birthdate').innerText = document.getElementById('personal-year').value;
+        document.getElementById('table-address').innerText = document.getElementById('personal-address').value;
+        document.getElementById('table-productname').innerText = document.getElementById('product-name').value;
+        document.getElementById('table-quantity').innerText = document.getElementById('product-quantity').value;
+        document.getElementById('table-price').innerText = document.getElementById('product-price').value;
+    }
+    function removeFields() {
+        document.getElementById('table-shop-name').innerText = '';
+        document.getElementById('table-shop-address').innerText = '';
+        document.getElementById('table-shop-owner').innerText = '';
+        document.getElementById('table-personal-phone').innerText = '';
+        document.getElementById('table-lastname').innerText = '';
+        document.getElementById('table-profession').innerText = '';
+        document.getElementById('table-birthdate').innerText = '';
+        document.getElementById('table-address').innerText = '';
+        document.getElementById('table-productname').innerText = '';
+        document.getElementById('table-quantity').innerText = '';
+        document.getElementById('table-price').innerText = '';
+    }
+</script>
+</body>
+</html>
+
+
+
+

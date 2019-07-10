@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <link type="text/css" rel="stylesheet" href="../js/styles.css">
+    <title>Злобина Н.В.</title>
+</header>
+<body>
+<div id="parent">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dolor dolorum mollitia possimus quia
+    quidem quisquam, quo sint ut? Animi aperiam dolorem, eius et expedita numquam quasi veritatis vitae?
+    <div id="text">Злобина Н.В.</div>
+</div>
+
+<script>
+    let positionLeft = 0;
+    let positionTop = 0;
+
+    function draw(count=1) {
+        if (positionLeft === 0 && positionTop < 200 && positionTop >= 0) {
+            positionTop += count;
+        } else if (positionTop <= 200 && positionLeft >= 0 && positionLeft < 200) {
+            positionLeft += count;
+            positionTop -= count;
+        } else if (positionTop < 200 && positionLeft >= 200 && positionTop >= 0 && positionLeft < 400) {
+            positionLeft += count;
+            positionTop += count;
+        } else if (positionLeft === 400 && positionTop>=0 && positionTop<=200) {
+            positionTop -= count;
+        } else if (positionLeft<=400 && positionTop >= 200) {
+            positionTop += count;
+            positionLeft += count;
+        } else {
+            positionLeft = 0;
+            positionTop = 0;
+        }
+        text.style.left = positionLeft + 'px';
+        text.style.top = positionTop + 'px';
+    }
+
+    window.onkeydown = function(e) {
+        var key = e.keyCode ? e.keyCode : e.which;
+
+        if (key === 38) {
+            draw(10);
+        }else if (key === 40) {
+            draw(-10);
+        }
+    }
+</script>
+</body>
+<head>
+</head>
+</html>
